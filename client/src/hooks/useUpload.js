@@ -15,6 +15,7 @@ const useUpload = () => {
 
   const handleChangeImage = (e) => {
     setImage(e.target.files[0]);
+    setMintedNFT(null);
   };
 
   const handleUploadImage = async () => {
@@ -69,6 +70,13 @@ const useUpload = () => {
       }
     } catch (error) {
       console.log(error);
+      toast({
+        title: "Error",
+        description: error?.response?.data?.error,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
     } finally {
       setLoading(false);
     }

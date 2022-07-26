@@ -20,8 +20,8 @@ func Init() {
 	_ = godotenv.Overload(".env", ".env.local")
 	_ = envconfig.Process("", C)
 
-	C.EthDeployWalletPk = "d5bd5848ebe290405812422144f9e32e16589ba268853ed24d7df44a16970bc6"
-	C.EthDeployWalletAddress = "0x7a9B4F815C02ff69743E9a3e665A591AE4bB372c"
+	C.EthDeployWalletPk = "a09d63baffb90ad6926e7caaddc437f9193eed759ecef20740b3270e3797cc08"
+	C.EthDeployWalletAddress = "0x3C9684637FAD39E2D230F4E8867DEE89F9689C16"
 	C.EthEndpointUrl = "https://rinkeby.infura.io/v3/14dc2121c0be4716983144938da1b9e6"
 	C.EthNftContractAddress = "0x0ED06150f3Bb1E164d0065fAa4EAbC4843659Ae8"
 	C.NftStorageKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweGQzNjY3MEMzNTI3OEJhZDBkZDk3MDU3Y0M5NEM2NDJkOTY2MDkxQzEiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1ODY0OTAwNDgxNiwibmFtZSI6IlBhc3Npb25lZXIifQ.UFk5yzBR0FCLciu1zQR5-N1kQYq_AzMJyRtZIWvJXqM"

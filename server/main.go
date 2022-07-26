@@ -55,18 +55,27 @@ func main() {
 		createReq, err := getCreateNftRequest(ctx)
 		if err != nil {
 			log.Error().Err(err).Msg("Failed to get params from request")
+			ctx.JSON(500, gin.H{
+				"error": err.Error(),
+			})
 			return
 		}
 
 		ipfsCid, err := UploadFileToIpfs(createReq.Image)
 		if err != nil {
 			log.Error().Err(err).Msg("Failed to upload file to IPFS")
+			ctx.JSON(500, gin.H{
+				"error": err.Error(),
+			})
 			return
 		}
 
 		txHash, err := MintEthNft(createReq.Name, createReq.Description, ipfsCid)
 		if err != nil {
 			log.Error().Err(err).Msg("Failed to mint NFT")
+			ctx.JSON(500, gin.H{
+				"error": err.Error(),
+			})
 			return
 		}
 
@@ -74,7 +83,7 @@ func main() {
 			"tx_hash": txHash,
 			"url":     RinkebyExplorer,
 			"fileUrl": "https://ipfs.io/ipfs/" + ipfsCid,
-			"error":   err,
+			"error":   err.Error(),
 		})
 	})
 
@@ -86,6 +95,7 @@ func main() {
 				"message": "Server error",
 				"data":    nil,
 			})
+			return
 		}
 
 		// save image to ./images dir
@@ -101,6 +111,7 @@ func main() {
 				"message": "Server error",
 				"data":    nil,
 			})
+			return
 		}
 
 		// create meta data and send to client
